@@ -1,0 +1,1079 @@
+<!-- ============================================================
+  STREAMLIT LAUNCHER — BLOGGER LANDING PAGE
+  Developer: Dwi Bakti N Dev
+  Icons: Font Awesome 6 (fontawesome.com)
+         Simple Icons (simpleicons.org)
+         Shields.io (shields.io)
+  ============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+/* ===================== SCOPED STYLES ===================== */
+#sl-app {
+  --bg: #070b14;
+  --bg-2: #0b1020;
+  --surface: #10182b;
+  --card: #141e36;
+  --card-2: #182442;
+  --text: #f5f7ff;
+  --muted: #a7b2cc;
+  --accent: #7c5cff;
+  --accent-2: #22d3ee;
+  --accent-3: #a78bfa;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --radius: 22px;
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+#sl-app *, #sl-app *::before, #sl-app *::after { box-sizing: border-box; }
+#sl-app img { max-width: 100%; display: block; }
+#sl-app a { color: inherit; text-decoration: none; }
+#sl-app .sl-container { width: min(1180px, 100% - 40px); margin-inline: auto; }
+#sl-app section[id] { scroll-margin-top: 92px; }
+
+/* ---------- NAVBAR ---------- */
+#sl-app .sl-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(7, 11, 20, 0.82);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+}
+#sl-app .sl-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 74px;
+}
+#sl-app .sl-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: 1.05rem;
+}
+#sl-app .sl-brand-icon {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+  font-size: 1rem;
+  box-shadow: 0 0 24px rgba(124, 92, 255, 0.45);
+}
+#sl-app .sl-nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+#sl-app .sl-nav-menu a:hover { color: #fff; }
+#sl-app .sl-nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), #5b8cff);
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 0.88rem;
+  box-shadow: 0 10px 24px rgba(124, 92, 255, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+#sl-app .sl-nav-cta:hover { transform: translateY(-2px); box-shadow: 0 16px 32px rgba(124, 92, 255, 0.45); }
+#sl-app .sl-nav-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+/* ---------- HERO ---------- */
+#sl-app .sl-hero {
+  position: relative;
+  padding: 76px 0 48px;
+  background:
+    radial-gradient(circle at 18% 8%, rgba(124, 92, 255, 0.32), transparent 34%),
+    radial-gradient(circle at 88% 0%, rgba(34, 211, 238, 0.22), transparent 30%),
+    linear-gradient(180deg, #070b14 0%, #0b1020 100%);
+  border-bottom: 1px solid var(--border);
+}
+#sl-app .sl-hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 56px;
+  align-items: center;
+}
+#sl-app .sl-badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 22px; }
+#sl-app .sl-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+#sl-app .sl-badge i { color: var(--accent-2); }
+#sl-app .sl-hero h1 {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+  margin: 0 0 22px;
+  font-weight: 900;
+}
+#sl-app .sl-gradient-text {
+  background: linear-gradient(90deg, #c4b5fd 0%, #a78bfa 35%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+#sl-app .sl-hero p.sl-lead {
+  font-size: 1.06rem;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 0 30px;
+}
+#sl-app .sl-hero-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+#sl-app .sl-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 24px;
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+#sl-app .sl-btn-primary {
+  background: linear-gradient(135deg, var(--accent) 0%, #5b8cff 100%);
+  color: #fff;
+  box-shadow: 0 14px 30px rgba(124, 92, 255, 0.38);
+}
+#sl-app .sl-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 20px 40px rgba(124, 92, 255, 0.5); }
+#sl-app .sl-btn-ghost {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border-strong);
+  color: #fff;
+}
+#sl-app .sl-btn-ghost:hover { background: rgba(255, 255, 255, 0.08); transform: translateY(-2px); }
+#sl-app .sl-hero-note { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 16px; color: var(--muted); font-size: 0.82rem; }
+#sl-app .sl-hero-note span { display: inline-flex; align-items: center; gap: 7px; }
+#sl-app .sl-hero-note i { color: #34d399; }
+
+/* Hero media */
+#sl-app .sl-hero-media { position: relative; }
+#sl-app .sl-hero-media > img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 26px;
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow);
+}
+#sl-app .sl-float {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: rgba(10, 16, 31, 0.92);
+  border: 1px solid var(--border-strong);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
+  font-size: 0.82rem;
+}
+#sl-app .sl-float i { color: var(--accent-2); font-size: 1rem; }
+#sl-app .sl-float strong { display: block; font-size: 0.92rem; line-height: 1.2; }
+#sl-app .sl-float span { color: var(--muted); font-size: 0.74rem; }
+#sl-app .sl-float-1 { top: 18px; left: -18px; }
+#sl-app .sl-float-2 { right: -14px; bottom: 28px; }
+
+/* ---------- STATS ---------- */
+#sl-app .sl-stats {
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+}
+#sl-app .sl-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  padding: 30px 0;
+}
+#sl-app .sl-stat {
+  padding: 0 24px;
+  border-right: 1px solid var(--border);
+}
+#sl-app .sl-stat:last-child { border-right: 0; }
+#sl-app .sl-stat strong {
+  display: block;
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  background: linear-gradient(90deg, #fff, #a7b2cc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+#sl-app .sl-stat span { color: var(--muted); font-size: 0.8rem; }
+
+/* ---------- SECTION BASE ---------- */
+#sl-app .sl-section { padding: 80px 0; }
+#sl-app .sl-section-dark { background: var(--bg-2); border-block: 1px solid var(--border); }
+#sl-app .sl-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent-2);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+#sl-app .sl-section-head { max-width: 720px; margin-bottom: 44px; }
+#sl-app .sl-section-head h2 {
+  font-size: clamp(1.6rem, 3.4vw, 2.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  margin: 0 0 14px;
+  font-weight: 900;
+}
+#sl-app .sl-section-head p { color: var(--muted); margin: 0; font-size: 1rem; }
+
+/* ---------- FEATURES ---------- */
+#sl-app .sl-features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+#sl-app .sl-feature {
+  padding: 24px 22px;
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--card) 0%, var(--surface) 100%);
+  border: 1px solid var(--border);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+#sl-app .sl-feature:hover {
+  transform: translateY(-4px);
+  border-color: rgba(124, 92, 255, 0.45);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);
+}
+#sl-app .sl-feature-icon {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: rgba(124, 92, 255, 0.12);
+  border: 1px solid rgba(124, 92, 255, 0.28);
+  color: var(--accent-3);
+  font-size: 1.15rem;
+  margin-bottom: 16px;
+}
+#sl-app .sl-feature h3 { font-size: 0.98rem; margin: 0 0 8px; font-weight: 800; letter-spacing: -0.01em; }
+#sl-app .sl-feature p { font-size: 0.84rem; color: var(--muted); margin: 0; line-height: 1.55; }
+
+/* ---------- SCREENSHOTS ---------- */
+#sl-app .sl-shots-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+#sl-app .sl-shot {
+  margin: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--card);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+#sl-app .sl-shot:hover { transform: translateY(-4px); border-color: var(--border-strong); }
+#sl-app .sl-shot img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+#sl-app .sl-shot figcaption { padding: 16px 18px 18px; }
+#sl-app .sl-shot figcaption strong { display: block; font-size: 0.92rem; margin-bottom: 4px; }
+#sl-app .sl-shot figcaption span { display: block; color: var(--muted); font-size: 0.8rem; }
+
+/* ---------- INSTALL ---------- */
+#sl-app .sl-install-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+#sl-app .sl-install-card {
+  padding: 26px;
+  border-radius: var(--radius);
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+#sl-app .sl-install-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+#sl-app .sl-install-head h3 { margin: 0; font-size: 1rem; font-weight: 800; }
+#sl-app .sl-install-card p { color: var(--muted); font-size: 0.85rem; margin: 14px 0 0; }
+#sl-app .sl-terminal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: #060a12;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.82rem;
+  color: #dbe6ff;
+  overflow-x: auto;
+}
+#sl-app .sl-prompt { color: #34d399; margin-right: 6px; user-select: none; }
+#sl-app .sl-copy {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--border-strong);
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  border-radius: 9px;
+  padding: 7px 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s ease;
+}
+#sl-app .sl-copy:hover { background: rgba(255, 255, 255, 0.1); }
+
+/* ---------- DOWNLOAD LINKS ---------- */
+#sl-app .sl-links-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+#sl-app .sl-link-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px;
+  border-radius: 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+#sl-app .sl-link-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(34, 211, 238, 0.45);
+  background: var(--card-2);
+}
+#sl-app .sl-link-card img { width: 30px; height: 30px; object-fit: contain; flex-shrink: 0; }
+#sl-app .sl-link-card i.sl-link-icon { font-size: 1.4rem; width: 30px; text-align: center; color: var(--accent-2); flex-shrink: 0; }
+#sl-app .sl-link-card div { flex: 1; min-width: 0; }
+#sl-app .sl-link-card strong { display: block; font-size: 0.9rem; }
+#sl-app .sl-link-card span { display: block; color: var(--muted); font-size: 0.76rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#sl-app .sl-link-card .fa-arrow-up-right-from-square { color: var(--muted); font-size: 0.72rem; flex-shrink: 0; }
+
+/* ---------- DEVELOPER ---------- */
+#sl-app .sl-dev-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 28px;
+  align-items: center;
+  padding: 32px;
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(124, 92, 255, 0.18), transparent 34%),
+    var(--card);
+  border: 1px solid var(--border);
+}
+#sl-app .sl-avatar {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(124, 92, 255, 0.55);
+  box-shadow: 0 0 0 8px rgba(124, 92, 255, 0.08);
+}
+#sl-app .sl-dev-card h2 { margin: 0 0 8px; font-size: 1.6rem; letter-spacing: -0.03em; }
+#sl-app .sl-dev-card p { margin: 0 0 18px; color: var(--muted); font-size: 0.9rem; max-width: 640px; }
+#sl-app .sl-dev-links { display: flex; flex-wrap: wrap; gap: 10px; }
+#sl-app .sl-dev-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+  transition: background 0.2s ease;
+}
+#sl-app .sl-dev-links a:hover { background: rgba(255, 255, 255, 0.08); }
+#sl-app .sl-dev-links img { width: 16px; height: 16px; }
+
+/* ---------- FAQ ---------- */
+#sl-app .sl-faq-grid { display: grid; gap: 12px; }
+#sl-app details {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px 20px;
+}
+#sl-app details summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-weight: 800;
+  font-size: 0.92rem;
+}
+#sl-app details summary::-webkit-details-marker { display: none; }
+#sl-app details summary i { color: var(--accent-2); transition: transform 0.2s ease; flex-shrink: 0; }
+#sl-app details[open] summary i { transform: rotate(45deg); }
+#sl-app details p { color: var(--muted); font-size: 0.86rem; margin: 12px 0 0; }
+
+/* ---------- FOOTER ---------- */
+#sl-app .sl-footer {
+  background: #050810;
+  border-top: 1px solid var(--border);
+  padding: 40px 0 28px;
+}
+#sl-app .sl-footer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 26px;
+  align-items: flex-start;
+}
+#sl-app .sl-footer-brand { max-width: 340px; }
+#sl-app .sl-footer-brand p { color: var(--muted); font-size: 0.82rem; margin: 10px 0 0; }
+#sl-app .sl-footer-links { display: flex; flex-wrap: wrap; gap: 22px; font-size: 0.82rem; color: var(--muted); }
+#sl-app .sl-footer-links a:hover { color: #fff; }
+#sl-app .sl-footer-bottom {
+  margin-top: 26px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+#sl-app .sl-footer-bottom strong { color: #fff; }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 1024px) {
+  #sl-app .sl-features-grid { grid-template-columns: repeat(2, 1fr); }
+  #sl-app .sl-hero-grid { gap: 36px; }
+}
+@media (max-width: 860px) {
+  #sl-app .sl-nav-toggle { display: inline-grid; place-items: center; }
+  #sl-app .sl-nav-menu {
+    display: none;
+    position: absolute;
+    top: 74px;
+    left: 20px;
+    right: 20px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    padding: 14px;
+    border-radius: 16px;
+    background: #0d1424;
+    border: 1px solid var(--border-strong);
+    box-shadow: var(--shadow);
+  }
+  #sl-app .sl-nav-menu.is-open { display: flex; }
+  #sl-app .sl-nav-menu a { padding: 10px 12px; border-radius: 10px; }
+  #sl-app .sl-nav-menu a:hover { background: rgba(255, 255, 255, 0.05); }
+  #sl-app .sl-nav-cta { display: none; }
+  #sl-app .sl-hero-grid { grid-template-columns: 1fr; }
+  #sl-app .sl-hero-media { order: -1; max-width: 560px; }
+  #sl-app .sl-float-1 { left: 10px; top: 10px; }
+  #sl-app .sl-float-2 { right: 10px; bottom: 10px; }
+  #sl-app .sl-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 22px 0; }
+  #sl-app .sl-stat:nth-child(2) { border-right: 0; }
+  #sl-app .sl-shots-grid { grid-template-columns: 1fr 1fr; }
+  #sl-app .sl-links-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 620px) {
+  #sl-app .sl-container { width: min(100% - 28px, 1180px); }
+  #sl-app .sl-hero { padding-top: 50px; }
+  #sl-app .sl-section { padding: 58px 0; }
+  #sl-app .sl-features-grid { grid-template-columns: 1fr; }
+  #sl-app .sl-shots-grid { grid-template-columns: 1fr; }
+  #sl-app .sl-install-grid { grid-template-columns: 1fr; }
+  #sl-app .sl-links-grid { grid-template-columns: 1fr; }
+  #sl-app .sl-dev-card { grid-template-columns: 1fr; text-align: center; justify-items: center; padding: 26px 20px; }
+  #sl-app .sl-dev-links { justify-content: center; }
+  #sl-app .sl-stats-grid { grid-template-columns: 1fr 1fr; }
+  #sl-app .sl-stat { padding: 0 16px; }
+  #sl-app .sl-stat:nth-child(odd) { border-right: 1px solid var(--border); }
+  #sl-app .sl-stat:nth-child(even) { border-right: 0; }
+  #sl-app .sl-float { padding: 9px 12px; }
+  #sl-app .sl-float strong { font-size: 0.82rem; }
+  #sl-app .sl-footer-grid { flex-direction: column; }
+}
+</style>
+
+<div id="sl-app">
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="sl-nav" aria-label="Navigasi utama">
+    <div class="sl-container sl-nav-inner">
+      <a class="sl-brand" href="#home">
+        <span class="sl-brand-icon"><i class="fa-solid fa-rocket" aria-hidden="true"></i></span>
+        <span>Streamlit Launcher</span>
+      </a>
+
+      <div class="sl-nav-menu" id="sl-nav-menu">
+        <a href="#fitur">Fitur</a>
+        <a href="#demo">Demo</a>
+        <a href="#instalasi">Instalasi</a>
+        <a href="#download">Download</a>
+        <a href="#developer">Developer</a>
+      </div>
+
+      <a class="sl-nav-cta" href="https://pypi.org/project/streamlit-launcher/" target="_blank" rel="noopener">
+        <i class="fa-brands fa-python" aria-hidden="true"></i> Download PyPI
+      </a>
+
+      <button class="sl-nav-toggle" id="sl-nav-toggle" aria-label="Buka menu" aria-expanded="false" aria-controls="sl-nav-menu">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <header class="sl-hero" id="home">
+    <div class="sl-container sl-hero-grid">
+      <div>
+        <div class="sl-badge-row">
+          <span class="sl-badge"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> v4.0.1 Stabil</span>
+          <span class="sl-badge"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i> MIT License</span>
+          <span class="sl-badge"><i class="fa-brands fa-python" aria-hidden="true"></i> Python 3.7+</span>
+        </div>
+
+        <h1>
+          Analisis data, ML, dan visualisasi dalam <span class="sl-gradient-text">satu launcher.</span>
+        </h1>
+
+        <p class="sl-lead">
+          Streamlit Launcher menyatukan Streamlit, deep learning, dan machine learning
+          dalam satu lingkungan no-code. Latih model, olah statistik, dan eksplor data
+          tanpa menulis kode — langsung dari browser.
+        </p>
+
+        <div class="sl-hero-actions">
+          <a class="sl-btn sl-btn-primary" href="https://pypi.org/project/streamlit-launcher/" target="_blank" rel="noopener">
+            <i class="fa-solid fa-download" aria-hidden="true"></i> Download di PyPI
+          </a>
+          <a class="sl-btn sl-btn-ghost" href="https://github.com/Python-Project-2/Streamlit-Launcher" target="_blank" rel="noopener">
+            <i class="fa-brands fa-github" aria-hidden="true"></i> Lihat GitHub
+          </a>
+        </div>
+
+        <div class="sl-hero-note">
+          <span><i class="fa-solid fa-check" aria-hidden="true"></i> Gratis & open source</span>
+          <span><i class="fa-solid fa-check" aria-hidden="true"></i> Windows, macOS, Linux</span>
+          <span><i class="fa-solid fa-check" aria-hidden="true"></i> Dukungan Termux</span>
+        </div>
+      </div>
+
+      <div class="sl-hero-media">
+        <img
+          src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80"
+          alt="Dashboard analitik data Streamlit Launcher"
+          loading="eager"
+        >
+        <div class="sl-float sl-float-1">
+          <i class="fa-solid fa-download" aria-hidden="true"></i>
+          <div><strong>22.8k+</strong><span>Total unduhan</span></div>
+        </div>
+        <div class="sl-float sl-float-2">
+          <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
+          <div><strong>No-Code</strong><span>Langsung pakai</span></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== STATS ==================== -->
+  <section class="sl-stats" aria-label="Statistik proyek">
+    <div class="sl-container sl-stats-grid">
+      <div class="sl-stat">
+        <strong>22.8k+</strong>
+        <span>Total unduhan PyPI</span>
+      </div>
+      <div class="sl-stat">
+        <strong>v4.0.1</strong>
+        <span>Versi stabil terbaru</span>
+      </div>
+      <div class="sl-stat">
+        <strong>MIT</strong>
+        <span>Lisensi open source</span>
+      </div>
+      <div class="sl-stat">
+        <strong>3.7+</strong>
+        <span>Dukungan Python</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FITUR ==================== -->
+  <section class="sl-section" id="fitur">
+    <div class="sl-container">
+      <div class="sl-section-head">
+        <span class="sl-kicker"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Fitur Utama</span>
+        <h2>Semua yang dibutuhkan untuk analisis modern.</h2>
+        <p>Dari statistik dasar hingga machine learning, DNA, kesehatan, keamanan data, dan API server — semuanya tersedia dalam satu antarmuka.</p>
+      </div>
+
+      <div class="sl-features-grid">
+        <article class="sl-feature">
+          <div class="sl-feature-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></div>
+          <h3>Statistik & Korelasi</h3>
+          <p>Ringkasan statistik, distribusi, varians, standar deviasi, korelasi, dan interval kepercayaan.</p>
+        </article>
+
+        <article class="sl-feature">
+          <div class="sl-feature-icon"><i class="fa-solid fa-chart-pie" aria-hidden="true"></i></div>
+          <h3>Visualisasi Interaktif</h3>
+          <p>Buat grafik dari CSV atau Excel dengan tampilan yang bersih, cepat, dan mudah dibaca.</p>
+        </article>
+
+        <article class="sl-feature">
+          <div class="sl-feature-icon"><i class="fa-solid fa-brain" aria-hidden="true"></i></div>
+          <h3>Machine Learning</h3>
+          <p>Latih model klasifikasi dan regresi seperti Random Forest, Logistic Regression, SVM, dan SVR.</p>
+        </article>
+
+        <article class="sl-feature">
+          <div class="sl-feature-icon"><i class="fa-solid fa-arrow-trend-up" aria-hidden="true"></i></div>
+          <h3>Stock Chart</h3>
+          <p>Grafik saham lengkap dengan candlestick, line chart, dan analisis tren.</p>
+        </article>
+
+        <article class="sl-feature">
+          <div class="sl-feature-icon"><i class="fa-solid fa-dna" aria-hidden="true"></i></div>
+          <h3>DNA Analysis</h3>
+          <p>Komposisi basa, motif, sifat biofisik, dan karakteristik sekuens DNA.</p>
+        </article>
+
+        <article class="sl-feature">
+          <div class="sl-feature-icon"><i class="fa-solid fa-face-smile" aria-hidden="true"></i></div>
+          <h3>Face Analysis</h3>
+          <p>Deteksi wajah, pengenalan, verifikasi, penilaian kualitas, clustering, dan similarity.</p>
+        </article>
+
+        <article class="sl-feature">
+          <div class="sl-feature-icon"><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i></div>
+          <h3>Health Doctor</h3>
+          <p>Pantau tekanan darah, kesehatan darah, berat badan, pola makan, dan target berat.</p>
+        </article>
+
+        <article class="sl-feature">
+          <div class="sl-feature-icon"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i></div>
+          <h3>Map Data</h3>
+          <p>Peta interaktif dengan satellite view, dark mode, marker clustering, dan tooltip.</p>
+        </article>
+
+        <article class="sl-feature">
+          <div class="sl-feature-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div>
+          <h3>CSV Security</h3>
+          <p>Enkripsi dan dekripsi data, sistem keamanan, serta manajemen data terenkripsi.</p>
+        </article>
+
+        <article class="sl-feature">
+          <div class="sl-feature-icon"><i class="fa-solid fa-server" aria-hidden="true"></i></div>
+          <h3>API Server & Keys</h3>
+          <p>API key, server Flask, pengujian endpoint, dan pembuatan kunci otomatis.</p>
+        </article>
+
+        <article class="sl-feature">
+          <div class="sl-feature-icon"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></div>
+          <h3>Search & Settings</h3>
+          <p>Cari di semua tabel, kolom, dan analisis. Atur profil, preferensi, dan tema.</p>
+        </article>
+
+        <article class="sl-feature">
+          <div class="sl-feature-icon"><i class="fa-solid fa-terminal" aria-hidden="true"></i></div>
+          <h3>Termux Support</h3>
+          <p>Instalasi otomatis di Termux (Android) untuk menjalankan launcher dari ponsel.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SCREENSHOTS / DEMO ==================== -->
+  <section class="sl-section sl-section-dark" id="demo">
+    <div class="sl-container">
+      <div class="sl-section-head">
+        <span class="sl-kicker"><i class="fa-solid fa-play" aria-hidden="true"></i> Demo & Tampilan</span>
+        <h2>Lihat langsung bagaimana Streamlit Launcher bekerja.</h2>
+        <p>Antarmuka gelap yang nyaman, alur kerja no-code, dan visualisasi data yang langsung terasa saat pertama kali dibuka.</p>
+      </div>
+
+      <div class="sl-shots-grid">
+        <figure class="sl-shot">
+          <img
+            src="https://opengraph.githubassets.com/1/Python-Project-2/Streamlit-Launcher"
+            alt="Repositori Streamlit Launcher di GitHub"
+            loading="lazy"
+          >
+          <figcaption>
+            <strong>Repositori resmi</strong>
+            <span>Kode sumber, dokumentasi, dan riwayat rilis di GitHub.</span>
+          </figcaption>
+        </figure>
+
+        <figure class="sl-shot">
+          <img
+            src="https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&fit=crop&w=1200&q=80"
+            alt="Visualisasi data dan chart analitik"
+            loading="lazy"
+          >
+          <figcaption>
+            <strong>Visualisasi data</strong>
+            <span>Chart interaktif untuk eksplorasi CSV dan Excel.</span>
+          </figcaption>
+        </figure>
+
+        <figure class="sl-shot">
+          <img
+            src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1200&q=80"
+            alt="Machine learning dan analisis data"
+            loading="lazy"
+          >
+          <figcaption>
+            <strong>Machine learning</strong>
+            <span>Latih dan bandingkan model tanpa menulis kode.</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== INSTALASI ==================== -->
+  <section class="sl-section" id="instalasi">
+    <div class="sl-container">
+      <div class="sl-section-head">
+        <span class="sl-kicker"><i class="fa-solid fa-download" aria-hidden="true"></i> Instalasi</span>
+        <h2>Mulai dalam hitungan detik.</h2>
+        <p>Pilih jalur instalasi yang paling sesuai: Python Package via PyPI, ekstensi editor via Open VSX, atau Termux untuk Android.</p>
+      </div>
+
+      <div class="sl-install-grid">
+        <div class="sl-install-card">
+          <div class="sl-install-head">
+            <img src="https://cdn.simpleicons.org/pypi/3775A9" alt="PyPI" width="28" height="28">
+            <h3>PyPI — Python Package</h3>
+          </div>
+          <div class="sl-terminal">
+            <code><span class="sl-prompt">$</span> pip install streamlit-launcher</code>
+            <button class="sl-copy" type="button" data-copy="pip install streamlit-launcher">
+              <i class="fa-regular fa-copy" aria-hidden="true"></i> Salin
+            </button>
+          </div>
+          <p>Jalankan di terminal, notebook, atau skrip otomatis. Mendukung Python 3.7+ dan Streamlit 1.28+.</p>
+        </div>
+
+        <div class="sl-install-card">
+          <div class="sl-install-head">
+            <i class="fa-solid fa-code" aria-hidden="true" style="color:#22d3ee;font-size:1.4rem;"></i>
+            <h3>Open VSX — Ekstensi Editor</h3>
+          </div>
+          <div class="sl-terminal">
+            <code><span class="sl-prompt">$</span> ovsx install dwidevelopes.streamlit-launcher</code>
+            <button class="sl-copy" type="button" data-copy="ovsx install dwidevelopes.streamlit-launcher">
+              <i class="fa-regular fa-copy" aria-hidden="true"></i> Salin
+            </button>
+          </div>
+          <p>Untuk VS Code, VSCodium, Gitpod, dan editor turunan VS Code lainnya.</p>
+        </div>
+
+        <div class="sl-install-card">
+          <div class="sl-install-head">
+            <i class="fa-solid fa-terminal" aria-hidden="true" style="color:#a78bfa;font-size:1.3rem;"></i>
+            <h3>Termux — Android</h3>
+          </div>
+          <p style="margin-top:0;">Instalasi lengkap di Termux tersedia melalui skrip otomatis. Cocok untuk menjalankan launcher langsung dari ponsel.</p>
+          <a class="sl-btn sl-btn-ghost" href="https://github.com/Python-Project-2/Streamlit-Launcher#readme" target="_blank" rel="noopener" style="margin-top:14px;padding:10px 16px;font-size:0.82rem;">
+            <i class="fa-solid fa-book-open" aria-hidden="true"></i> Panduan Termux
+          </a>
+        </div>
+
+        <div class="sl-install-card">
+          <div class="sl-install-head">
+            <i class="fa-solid fa-flask" aria-hidden="true" style="color:#34d399;font-size:1.3rem;"></i>
+            <h3>Development</h3>
+          </div>
+          <div class="sl-terminal">
+            <code><span class="sl-prompt">$</span> pip install streamlit-launcher[dev]</code>
+            <button class="sl-copy" type="button" data-copy="pip install streamlit-launcher[dev]">
+              <i class="fa-regular fa-copy" aria-hidden="true"></i> Salin
+            </button>
+          </div>
+          <p>Untuk kontribusi: pytest, black, flake8, mypy, dan pre-commit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== DOWNLOAD LINKS ==================== -->
+  <section class="sl-section sl-section-dark" id="download">
+    <div class="sl-container">
+      <div class="sl-section-head">
+        <span class="sl-kicker"><i class="fa-solid fa-link" aria-hidden="true"></i> Semua Tautan Resmi</span>
+        <h2>Download dari sumber terpercaya.</h2>
+        <p>Gunakan tautan resmi berikut untuk mendapatkan versi terbaru, dokumentasi, dan dukungan.</p>
+      </div>
+
+      <div class="sl-links-grid">
+        <a class="sl-link-card" href="https://pypi.org/project/streamlit-launcher/" target="_blank" rel="noopener">
+          <img src="https://cdn.simpleicons.org/pypi/3775A9" alt="PyPI" width="30" height="30">
+          <div><strong>PyPI</strong><span>pip install streamlit-launcher</span></div>
+          <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+        </a>
+
+        <a class="sl-link-card" href="https://github.com/Python-Project-2/Streamlit-Launcher" target="_blank" rel="noopener">
+          <img src="https://cdn.simpleicons.org/github/ffffff" alt="GitHub" width="30" height="30">
+          <div><strong>GitHub</strong><span>Kode sumber & rilis</span></div>
+          <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+        </a>
+
+        <a class="sl-link-card" href="https://open-vsx.org/extension/dwidevelopes/streamlit-launcher" target="_blank" rel="noopener">
+          <i class="fa-solid fa-code sl-link-icon" aria-hidden="true"></i>
+          <div><strong>Open VSX</strong><span>dwidevelopes.streamlit-launcher</span></div>
+          <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+        </a>
+
+        <a class="sl-link-card" href="https://python-project-2.github.io/Streamlit-Launcher/" target="_blank" rel="noopener">
+          <i class="fa-solid fa-globe sl-link-icon" aria-hidden="true"></i>
+          <div><strong>Online Demo</strong><span>Coba langsung di browser</span></div>
+          <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+        </a>
+
+        <a class="sl-link-card" href="https://github.com/Python-Project-2/Streamlit-Launcher#readme" target="_blank" rel="noopener">
+          <i class="fa-solid fa-book-open sl-link-icon" aria-hidden="true"></i>
+          <div><strong>Dokumentasi</strong><span>README & panduan lengkap</span></div>
+          <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+        </a>
+
+        <a class="sl-link-card" href="https://github.com/Python-Project-2/Streamlit-Launcher/issues" target="_blank" rel="noopener">
+          <i class="fa-solid fa-bug sl-link-icon" aria-hidden="true"></i>
+          <div><strong>Laporkan Bug</strong><span>Issues GitHub</span></div>
+          <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+        </a>
+
+        <a class="sl-link-card" href="https://github.com/Python-Project-2/Streamlit-Launcher/pulls" target="_blank" rel="noopener">
+          <i class="fa-solid fa-lightbulb sl-link-icon" aria-hidden="true"></i>
+          <div><strong>Request Fitur</strong><span>Pull request & diskusi</span></div>
+          <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+        </a>
+
+        <a class="sl-link-card" href="https://github.com/DwiDevelopes" target="_blank" rel="noopener">
+          <img src="https://cdn.simpleicons.org/github/ffffff" alt="GitHub DwiDevelopes" width="30" height="30">
+          <div><strong>Developer</strong><span>Dwi Bakti N Dev</span></div>
+          <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== DEVELOPER ==================== -->
+  <section class="sl-section" id="developer">
+    <div class="sl-container">
+      <div class="sl-dev-card">
+        <img
+          class="sl-avatar"
+          src="https://github.com/DwiDevelopes.png?size=220"
+          alt="Dwi Bakti N Dev"
+          loading="lazy"
+          onerror="this.style.display='none'"
+        >
+        <div>
+          <span class="sl-kicker"><i class="fa-solid fa-user-gear" aria-hidden="true"></i> Developer</span>
+          <h2>Dwi Bakti N Dev</h2>
+          <p>
+            Pengembang di balik Streamlit Launcher. Berfokus pada tool open-source yang
+            memudahkan analisis data, machine learning, dan visualisasi — tanpa harus
+            menulis kode dari nol. Proyek ini dirilis dengan lisensi MIT agar bisa
+            digunakan, dipelajari, dan dikembangkan bersama.
+          </p>
+          <div class="sl-dev-links">
+            <a href="https://github.com/DwiDevelopes" target="_blank" rel="noopener">
+              <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub DwiDevelopes
+            </a>
+            <a href="https://pypi.org/project/streamlit-launcher/" target="_blank" rel="noopener">
+              <i class="fa-brands fa-python" aria-hidden="true"></i> PyPI Author
+            </a>
+            <a href="https://github.com/Python-Project-2/Streamlit-Launcher" target="_blank" rel="noopener">
+              <i class="fa-solid fa-code-branch" aria-hidden="true"></i> Repositori Proyek
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FAQ ==================== -->
+  <section class="sl-section sl-section-dark" id="faq">
+    <div class="sl-container">
+      <div class="sl-section-head">
+        <span class="sl-kicker"><i class="fa-solid fa-circle-question" aria-hidden="true"></i> FAQ</span>
+        <h2>Pertanyaan yang sering diajukan.</h2>
+        <p>Ringkasan cepat sebelum kamu mengunduh dan menjalankan Streamlit Launcher.</p>
+      </div>
+
+      <div class="sl-faq-grid">
+        <details>
+          <summary>Apakah Streamlit Launcher gratis? <i class="fa-solid fa-plus" aria-hidden="true"></i></summary>
+          <p>Ya. Streamlit Launcher dirilis dengan lisensi MIT, sehingga gratis digunakan, dimodifikasi, dan didistribusikan sesuai ketentuan lisensi.</p>
+        </details>
+
+        <details>
+          <summary>Apakah saya perlu bisa coding? <i class="fa-solid fa-plus" aria-hidden="true"></i></summary>
+          <p>Tidak. Streamlit Launcher dirancang sebagai platform no-code. Kamu bisa mengunggah CSV atau Excel, memilih model, dan menjalankan analisis langsung dari antarmuka.</p>
+        </details>
+
+        <details>
+          <summary>Platform apa saja yang didukung? <i class="fa-solid fa-plus" aria-hidden="true"></i></summary>
+          <p>Windows, macOS, dan Linux. Tersedia juga dukungan Termux untuk Android melalui panduan instalasi di README.</p>
+        </details>
+
+        <details>
+          <summary>Bagaimana cara memperbarui ke versi terbaru? <i class="fa-solid fa-plus" aria-hidden="true"></i></summary>
+          <p>Jalankan <code>pip install --upgrade streamlit-launcher</code> di terminal. Untuk ekstensi Open VSX, perbarui melalui editor atau gunakan perintah <code>ovsx install</code> kembali.</p>
+        </details>
+
+        <details>
+          <summary>Di mana saya bisa melaporkan bug atau meminta fitur? <i class="fa-solid fa-plus" aria-hidden="true"></i></summary>
+          <p>Gunakan halaman Issues untuk melaporkan bug, atau kirim pull request / diskusi melalui repositori GitHub resmi.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="sl-footer">
+    <div class="sl-container">
+      <div class="sl-footer-grid">
+        <div class="sl-footer-brand">
+          <a class="sl-brand" href="#home">
+            <span class="sl-brand-icon"><i class="fa-solid fa-rocket" aria-hidden="true"></i></span>
+            <span>Streamlit Launcher</span>
+          </a>
+          <p>Platform no-code untuk analisis data, machine learning, dan visualisasi. Dikembangkan oleh Dwi Bakti N Dev.</p>
+        </div>
+
+        <div class="sl-footer-links">
+          <a href="https://pypi.org/project/streamlit-launcher/" target="_blank" rel="noopener">PyPI</a>
+          <a href="https://github.com/Python-Project-2/Streamlit-Launcher" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://open-vsx.org/extension/dwidevelopes/streamlit-launcher" target="_blank" rel="noopener">Open VSX</a>
+          <a href="https://python-project-2.github.io/Streamlit-Launcher/" target="_blank" rel="noopener">Demo</a>
+          <a href="https://github.com/DwiDevelopes" target="_blank" rel="noopener">Developer</a>
+        </div>
+      </div>
+
+      <div class="sl-footer-bottom">
+        <span>&copy; 2026 <strong>Streamlit Launcher</strong>. MIT License.</span>
+        <span>Dibuat oleh <strong>Dwi Bakti N Dev</strong>.</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  var app = document.getElementById('sl-app');
+  if (!app) return;
+
+  /* Copy to clipboard */
+  app.addEventListener('click', function (event) {
+    var button = event.target.closest('[data-copy]');
+    if (!button) return;
+    var text = button.getAttribute('data-copy');
+    if (!text) return;
+
+    function done() {
+      var original = button.innerHTML;
+      button.innerHTML = '<i class="fa-solid fa-check" aria-hidden="true"></i> Tersalin';
+      window.setTimeout(function () {
+        button.innerHTML = original;
+      }, 1600);
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done).catch(function () {});
+    } else {
+      var area = document.createElement('textarea');
+      area.value = text;
+      area.style.position = 'fixed';
+      area.style.opacity = '0';
+      document.body.appendChild(area);
+      area.select();
+      try { document.execCommand('copy'); done(); } catch (error) {}
+      document.body.removeChild(area);
+    }
+  });
+
+  /* Mobile navigation */
+  var toggle = document.getElementById('sl-nav-toggle');
+  var menu = document.getElementById('sl-nav-menu');
+
+  if (toggle && menu) {
+    toggle.addEventListener('click', function () {
+      var isOpen = menu.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    menu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        menu.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+})();
+</script>
