@@ -1,8 +1,4 @@
-Berikut adalah draf `README.md` yang lengkap dan siap pakai untuk proyek **Streamlit Launcher**, dengan penyesuaian konteks agar relevan digunakan bersama **Google Antigravity** (IDE berbasis VS Code dengan kemampuan AI agentic).
 
-README ini menggabungkan informasi dari PyPI, statistik unduhan terbaru, catatan rilis v4.0.1, serta detail teknis dan profil pengembang.
-
----
 
 # Streamlit Launcher for Antigravity
 
